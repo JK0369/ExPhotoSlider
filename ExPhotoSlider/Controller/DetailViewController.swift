@@ -16,10 +16,6 @@ import RxCocoa
 class DetailViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
-    static let collectionViewItemSize = CGSize(
-      width: (UIScreen.main.bounds.width - 32.0 - Self.collectionViewSpacing) / 3.0,
-      height: 96.0
-    )
     static let collectionViewSpacing = 8.0
     static let collectionViewContentInset = UIEdgeInsets(
       top: 4.0,
@@ -38,7 +34,6 @@ class DetailViewController: UIViewController {
   private let sliderCollectionView = UICollectionView(
     frame: .zero,
     collectionViewLayout: UICollectionViewFlowLayout().then {
-      $0.itemSize = Metric.collectionViewItemSize
       $0.minimumLineSpacing = Metric.collectionViewSpacing
       $0.minimumInteritemSpacing = Metric.collectionViewSpacing
       $0.scrollDirection = .horizontal
@@ -108,7 +103,7 @@ class DetailViewController: UIViewController {
     view.addSubview(self.sliderCollectionView)
     self.sliderCollectionView.snp.makeConstraints {
       $0.top.equalToSuperview()
-      $0.bottom.equalToSuperview().inset(320)
+      $0.bottom.equalToSuperview().inset(UIScreen.main.bounds.height / 2)
       $0.left.right.equalTo(view.safeAreaLayoutGuide)
     }
   }
@@ -124,6 +119,9 @@ class DetailViewController: UIViewController {
     
     self.imageDataSource
       .bind(to: self.sliderCollectionView.rx.items(dataSource: collectionViewDataSource))
+      .disposed(by: self.disposeBag)
+    
+    self.sliderCollectionView.rx.setDelegate(self)
       .disposed(by: self.disposeBag)
   }
   
@@ -149,5 +147,11 @@ class DetailViewController: UIViewController {
       }
       .bind(onNext: imageDataSource.accept)
       .disposed(by: disposeBag)
+  }
+}
+
+extension DetailViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    self.sliderCollectionView.frame.size
   }
 }
