@@ -102,9 +102,9 @@ class DetailViewController: UIViewController {
   private func configureLayout() {
     view.addSubview(self.sliderCollectionView)
     self.sliderCollectionView.snp.makeConstraints {
-      $0.top.equalToSuperview()
-      $0.bottom.equalToSuperview().inset(UIScreen.main.bounds.height / 2)
-      $0.left.right.equalTo(view.safeAreaLayoutGuide)
+      $0.edges.equalToSuperview().inset(16).priority(.low)
+      $0.top.left.greaterThanOrEqualTo(view.safeAreaLayoutGuide).priority(.high)
+      $0.bottom.right.lessThanOrEqualTo(view.safeAreaLayoutGuide).priority(.high)
     }
   }
   
