@@ -1,6 +1,6 @@
 //
-//  ImageViewController.swift
-//  ExSlider
+//  DetailViewController.swift
+//  ExPhotoSlider
 //
 //  Created by Jake.K on 2021/12/14.
 //
@@ -13,7 +13,7 @@ import RxDataSources
 import RxSwift
 import RxCocoa
 
-class ImageViewController: UIViewController {
+class DetailViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
     static let collectionViewItemSize = CGSize(
@@ -28,22 +28,23 @@ class ImageViewController: UIViewController {
       right: 4.0
     )
   }
-  
+
   private enum Color {
     static let clear = UIColor.clear
     static let white = UIColor.white
   }
   
   // MARK: UI
-  private let imageCollectionView = UICollectionView(
+  private let sliderCollectionView = UICollectionView(
     frame: .zero,
     collectionViewLayout: UICollectionViewFlowLayout().then {
       $0.itemSize = Metric.collectionViewItemSize
       $0.minimumLineSpacing = Metric.collectionViewSpacing
       $0.minimumInteritemSpacing = Metric.collectionViewSpacing
+      $0.scrollDirection = .horizontal
     }
   ).then {
-    $0.register(cellType: ImageCollectionViewCell.self)
+    $0.register(cellType: SliderCollectionViewCell.self)
     $0.contentInset = Metric.collectionViewContentInset
     $0.showsHorizontalScrollIndicator = false
     $0.allowsSelection = true
@@ -56,6 +57,18 @@ class ImageViewController: UIViewController {
   private var randomImageProvider: RandomImageProviderType!
   private var imageDataSource = BehaviorRelay<[ImageSection]>(value: [])
   private let disposeBag = DisposeBag()
+  private let detailImageCount: Int
+  
+  // MARK: Initializers
+  init(detailImageCount: Int) {
+    self.detailImageCount = detailImageCount
+    super.init(nibName: nil, bundle: nil)
+  }
+  
+  @available(*, unavailable)
+  required init?(coder: NSCoder) {
+    fatalError("coder: NSCoder has not been implemented")
+  }
   
   // MARK: DataSources
   private static func configureCollectionViewCell(
@@ -63,7 +76,7 @@ class ImageViewController: UIViewController {
     indexPath: IndexPath,
     item: ImageSectionItem
   ) -> UICollectionViewCell {
-    let cell = collectionView.dequeueReusableCell(for: indexPath) as ImageCollectionViewCell
+    let cell = collectionView.dequeueReusableCell(for: indexPath) as SliderCollectionViewCell
     switch item {
     case .main(let imageItem):
       cell.setImage(imageItem.image)
@@ -79,6 +92,7 @@ class ImageViewController: UIViewController {
     self.injectDependency()
     self.configureLayout()
     self.setupCollectionViewDataSource()
+    self.configureBind()
     self.loadImage()
   }
   
@@ -91,9 +105,10 @@ class ImageViewController: UIViewController {
   }
   
   private func configureLayout() {
-    view.addSubview(self.imageCollectionView)
-    self.imageCollectionView.snp.makeConstraints {
-      $0.top.bottom.equalToSuperview()
+    view.addSubview(self.sliderCollectionView)
+    self.sliderCollectionView.snp.makeConstraints {
+      $0.top.equalToSuperview()
+      $0.bottom.equalToSuperview().inset(320)
       $0.left.right.equalTo(view.safeAreaLayoutGuide)
     }
   }
@@ -108,31 +123,21 @@ class ImageViewController: UIViewController {
     }
     
     self.imageDataSource
-      .bind(to: self.imageCollectionView.rx.items(dataSource: collectionViewDataSource))
-      .disposed(by: self.disposeBag)
-    
-    self.imageCollectionView.rx.itemSelected
-      .map(collectionViewDataSource.item)
-      .map(self.getDetailImageCount(imageSectionItem:))
-      .bind(onNext: self.presentDetailViewController(detailImageCount:))
+      .bind(to: self.sliderCollectionView.rx.items(dataSource: collectionViewDataSource))
       .disposed(by: self.disposeBag)
   }
   
-  private func getDetailImageCount(imageSectionItem: ImageSectionItem) -> Int {
-    switch imageSectionItem {
-    case .main(let image):
-      return image.detailImageCount
-    }
-  }
-  
-  private func presentDetailViewController(detailImageCount: Int) {
-    let detailViewController = DetailViewController(detailImageCount: detailImageCount)
-    present(detailViewController, animated: true)
+  private func configureBind() {
+    self.sliderCollectionView.rx.itemSelected
+      .bind(onNext: { indexPath in
+        print("did Tap indexPath \(indexPath)")
+      })
+      .disposed(by: disposeBag)
   }
   
   private func loadImage() {
     self.randomImageProvider
-      .getRandomColorImages(number: 30)
+      .getRandomColorImages(number: detailImageCount)
       .asObservable()
       .map { images -> [ImageSection] in
         let imageSectionItems = images.map { image -> ImageSectionItem in

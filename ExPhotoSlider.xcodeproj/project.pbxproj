@@ -19,6 +19,10 @@
 		C6D6EB572768C50600A88721 /* ImageSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB562768C50600A88721 /* ImageSection.swift */; };
 		C6D6EB592768C51000A88721 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB582768C51000A88721 /* Image.swift */; };
 		C6D6EB5B2768C5B000A88721 /* ModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB5A2768C5B000A88721 /* ModelType.swift */; };
+		C6D6EB5D2768D01000A88721 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB5C2768D01000A88721 /* DetailViewController.swift */; };
+		C6D6EB5F2768D13F00A88721 /* SliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB5E2768D13F00A88721 /* SliderCollectionViewCell.swift */; };
+		C6D6EB612768D52300A88721 /* RxDataSource+Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */; };
+		C6D6EB632768D5DA00A88721 /* RxOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB622768D5DA00A88721 /* RxOperators.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +41,10 @@
 		C6D6EB562768C50600A88721 /* ImageSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSection.swift; sourceTree = "<group>"; };
 		C6D6EB582768C51000A88721 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		C6D6EB5A2768C5B000A88721 /* ModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelType.swift; sourceTree = "<group>"; };
+		C6D6EB5C2768D01000A88721 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		C6D6EB5E2768D13F00A88721 /* SliderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCollectionViewCell.swift; sourceTree = "<group>"; };
+		C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxDataSource+Indexable.swift"; sourceTree = "<group>"; };
+		C6D6EB622768D5DA00A88721 /* RxOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperators.swift; sourceTree = "<group>"; };
 		E6EA25588FC51AF57DF0CE45 /* Pods_ExPhotoSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExPhotoSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -99,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CA84352768C2E7004640F3 /* ImageViewController.swift */,
+				C6D6EB5C2768D01000A88721 /* DetailViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -107,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				C6CA84332768C2E1004640F3 /* ImageCollectionViewCell.swift */,
+				C6D6EB5E2768D13F00A88721 /* SliderCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -126,6 +136,8 @@
 			children = (
 				C6CA842F2768C2D5004640F3 /* RandomImageProducer.swift */,
 				C6CA84302768C2D5004640F3 /* UIColor+image.swift */,
+				C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */,
+				C6D6EB622768D5DA00A88721 /* RxOperators.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -260,13 +272,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C6D6EB612768D52300A88721 /* RxDataSource+Indexable.swift in Sources */,
 				C6CA84312768C2D5004640F3 /* RandomImageProducer.swift in Sources */,
+				C6D6EB5F2768D13F00A88721 /* SliderCollectionViewCell.swift in Sources */,
 				C6CA84172768C28E004640F3 /* AppDelegate.swift in Sources */,
 				C6CA84322768C2D5004640F3 /* UIColor+image.swift in Sources */,
 				C6CA84362768C2E7004640F3 /* ImageViewController.swift in Sources */,
+				C6D6EB632768D5DA00A88721 /* RxOperators.swift in Sources */,
 				C6D6EB5B2768C5B000A88721 /* ModelType.swift in Sources */,
 				C6D6EB592768C51000A88721 /* Image.swift in Sources */,
 				C6CA84192768C28E004640F3 /* SceneDelegate.swift in Sources */,
+				C6D6EB5D2768D01000A88721 /* DetailViewController.swift in Sources */,
 				C6CA84342768C2E1004640F3 /* ImageCollectionViewCell.swift in Sources */,
 				C6D6EB572768C50600A88721 /* ImageSection.swift in Sources */,
 			);

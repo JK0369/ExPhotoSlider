@@ -33,6 +33,15 @@ extension ImageSection: Equatable {
   }
 }
 
-enum ImageSectionItem: Equatable {
+enum ImageSectionItem: IdentifiableType, Equatable {
+  typealias Identity = String
+
   case main(Image)
+  
+  var identity: String {
+    switch self {
+    case let .main(image):
+      return String(describing: image.createdAt)
+    }
+  }
 }
