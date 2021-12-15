@@ -153,8 +153,8 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let widthOffset = Metric.collectionViewSpacing
-    let width = sliderCollectionView.bounds.size.width - widthOffset
+    let widthPadding = Metric.collectionViewSpacing / 2
+    let width = sliderCollectionView.bounds.size.width - widthPadding
     let height = sliderCollectionView.bounds.size.height
     return CGSize(width: width, height: height)
   }
