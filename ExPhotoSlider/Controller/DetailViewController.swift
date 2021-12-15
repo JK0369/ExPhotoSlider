@@ -46,6 +46,7 @@ class DetailViewController: UIViewController {
     $0.isScrollEnabled = true
     $0.bounces = true
     $0.backgroundColor = Color.clear
+    $0.isPagingEnabled = true
   }
   
   // MARK: Properties
@@ -152,6 +153,9 @@ class DetailViewController: UIViewController {
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    self.sliderCollectionView.frame.size
+    let widthOffset = Metric.collectionViewSpacing
+    let width = sliderCollectionView.bounds.size.width - widthOffset
+    let height = sliderCollectionView.bounds.size.height
+    return CGSize(width: width, height: height)
   }
 }
