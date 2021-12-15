@@ -16,11 +16,11 @@ import RxCocoa
 class ImageViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
-    private static let numberOfRows = 3.0
+    private static let numberOfColumns = 3.0
     static let collectionViewItemSize = CGSize(
       width: (
-        UIScreen.main.bounds.width - collectionViewSpacing * (numberOfRows + 1) - Self.collectionViewSpacing
-      ) / numberOfRows,
+        UIScreen.main.bounds.width - collectionViewSpacing * (numberOfColumns + 1) - Self.collectionViewSpacing
+      ) / numberOfColumns,
       height: 96.0
     )
     static let collectionViewSpacing = 4.0

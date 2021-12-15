@@ -23,6 +23,7 @@
 		C6D6EB5F2768D13F00A88721 /* SliderCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB5E2768D13F00A88721 /* SliderCollectionViewCell.swift */; };
 		C6D6EB612768D52300A88721 /* RxDataSource+Indexable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */; };
 		C6D6EB632768D5DA00A88721 /* RxOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB622768D5DA00A88721 /* RxOperators.swift */; };
+		C6D6EB6E2769879000A88721 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6D6EB6D2769879000A88721 /* UIEdgeInsets.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		C6D6EB5E2768D13F00A88721 /* SliderCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SliderCollectionViewCell.swift; sourceTree = "<group>"; };
 		C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxDataSource+Indexable.swift"; sourceTree = "<group>"; };
 		C6D6EB622768D5DA00A88721 /* RxOperators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxOperators.swift; sourceTree = "<group>"; };
+		C6D6EB6D2769879000A88721 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		E6EA25588FC51AF57DF0CE45 /* Pods_ExPhotoSlider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ExPhotoSlider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -138,6 +140,7 @@
 				C6CA84302768C2D5004640F3 /* UIColor+image.swift */,
 				C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */,
 				C6D6EB622768D5DA00A88721 /* RxOperators.swift */,
+				C6D6EB6D2769879000A88721 /* UIEdgeInsets.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				C6CA84362768C2E7004640F3 /* ImageViewController.swift in Sources */,
 				C6D6EB632768D5DA00A88721 /* RxOperators.swift in Sources */,
 				C6D6EB5B2768C5B000A88721 /* ModelType.swift in Sources */,
+				C6D6EB6E2769879000A88721 /* UIEdgeInsets.swift in Sources */,
 				C6D6EB592768C51000A88721 /* Image.swift in Sources */,
 				C6CA84192768C28E004640F3 /* SceneDelegate.swift in Sources */,
 				C6D6EB5D2768D01000A88721 /* DetailViewController.swift in Sources */,
