@@ -18,10 +18,10 @@ class DetailViewController: UIViewController {
   private enum Metric {
     static let collectionViewSpacing = 8.0
     static let collectionViewContentInset = UIEdgeInsets(
-      top: 4.0,
-      left: 4.0,
-      bottom: 4.0,
-      right: 4.0
+      top: 0.0,
+      left: 0.0,
+      bottom: 0.0,
+      right: 0.0
     )
   }
 
