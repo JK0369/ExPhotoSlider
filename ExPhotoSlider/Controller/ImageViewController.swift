@@ -16,17 +16,15 @@ import RxCocoa
 class ImageViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
+    private static let numberOfRows = 3.0
     static let collectionViewItemSize = CGSize(
-      width: (UIScreen.main.bounds.width - 32.0 - Self.collectionViewSpacing) / 3.0,
+      width: (
+        UIScreen.main.bounds.width - collectionViewSpacing * (numberOfRows + 1) - Self.collectionViewSpacing
+      ) / numberOfRows,
       height: 96.0
     )
-    static let collectionViewSpacing = 8.0
-    static let collectionViewContentInset = UIEdgeInsets(
-      top: 4.0,
-      left: 4.0,
-      bottom: 4.0,
-      right: 4.0
-    )
+    static let collectionViewSpacing = 4.0
+    static let collectionViewContentInset = UIEdgeInsets(4.0)
   }
   
   private enum Color {
