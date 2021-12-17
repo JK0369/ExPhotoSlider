@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A3DC9BC924A121A6F5425497 /* Pods_ExPhotoSlider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6EA25588FC51AF57DF0CE45 /* Pods_ExPhotoSlider.framework */; };
+		C69BE375276C2EDC009DD9C4 /* RxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C69BE374276C2EDC009DD9C4 /* RxViewController.swift */; };
 		C6CA84172768C28E004640F3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA84162768C28E004640F3 /* AppDelegate.swift */; };
 		C6CA84192768C28E004640F3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6CA84182768C28E004640F3 /* SceneDelegate.swift */; };
 		C6CA84202768C290004640F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6CA841F2768C290004640F3 /* Assets.xcassets */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		A3CD769AEFDBAB711099AFD8 /* Pods-ExPhotoSlider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExPhotoSlider.release.xcconfig"; path = "Target Support Files/Pods-ExPhotoSlider/Pods-ExPhotoSlider.release.xcconfig"; sourceTree = "<group>"; };
 		C4ADACB469CFDEA986C6D86C /* Pods-ExPhotoSlider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ExPhotoSlider.debug.xcconfig"; path = "Target Support Files/Pods-ExPhotoSlider/Pods-ExPhotoSlider.debug.xcconfig"; sourceTree = "<group>"; };
+		C69BE374276C2EDC009DD9C4 /* RxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxViewController.swift; sourceTree = "<group>"; };
 		C6CA84132768C28E004640F3 /* ExPhotoSlider.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExPhotoSlider.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6CA84162768C28E004640F3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6CA84182768C28E004640F3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -141,6 +143,7 @@
 				C6D6EB602768D52300A88721 /* RxDataSource+Indexable.swift */,
 				C6D6EB622768D5DA00A88721 /* RxOperators.swift */,
 				C6D6EB6D2769879000A88721 /* UIEdgeInsets.swift */,
+				C69BE374276C2EDC009DD9C4 /* RxViewController.swift */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				C6D6EB5D2768D01000A88721 /* DetailViewController.swift in Sources */,
 				C6CA84342768C2E1004640F3 /* ImageCollectionViewCell.swift in Sources */,
 				C6D6EB572768C50600A88721 /* ImageSection.swift in Sources */,
+				C69BE375276C2EDC009DD9C4 /* RxViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

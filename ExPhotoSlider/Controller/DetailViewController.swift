@@ -17,6 +17,8 @@ class DetailViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
     static let collectionViewSpacing = 8.0
+    static let collectionViewVerticalInset = (UIScreen.main.bounds.height / 3)
+    static let collectionViewHorizontalInset = 8.0
     static let collectionViewContentInset = UIEdgeInsets(
       top: 0.0,
       left: 0.0,
@@ -87,8 +89,8 @@ class DetailViewController: UIViewController {
     self.setupViews()
     self.injectDependency()
     self.configureLayout()
-    self.setupCollectionViewDataSource()
     self.configureBind()
+    self.setupCollectionViewDataSource()
     self.loadImage()
   }
   
@@ -102,9 +104,19 @@ class DetailViewController: UIViewController {
   
   private func configureLayout() {
     view.addSubview(self.sliderCollectionView)
+    
     self.sliderCollectionView.snp.makeConstraints {
-      $0.edges.equalToSuperview().inset(16)
+      $0.centerX.centerY.equalToSuperview()
+      $0.height.equalToSuperview().inset(Metric.collectionViewVerticalInset)
+      $0.left.equalTo(view.safeAreaLayoutGuide).offset(Metric.collectionViewHorizontalInset)
+      $0.right.equalTo(view.safeAreaLayoutGuide).offset(-Metric.collectionViewHorizontalInset)
     }
+  }
+  
+  private func configureBind() {
+    self.rx.viewWillTransition
+      .bind { [weak self] in self?.updateConstraints() }
+      .disposed(by: disposeBag)
   }
   
   private func setupCollectionViewDataSource() {
@@ -124,14 +136,6 @@ class DetailViewController: UIViewController {
       .disposed(by: self.disposeBag)
   }
   
-  private func configureBind() {
-    self.sliderCollectionView.rx.itemSelected
-      .bind(onNext: { indexPath in
-        print("did Tap indexPath \(indexPath)")
-      })
-      .disposed(by: disposeBag)
-  }
-  
   private func loadImage() {
     self.randomImageProvider
       .getRandomColorImages(number: detailImageCount)
@@ -145,15 +149,26 @@ class DetailViewController: UIViewController {
         return [imageSections]
       }
       .bind(onNext: imageDataSource.accept)
-      .disposed(by: disposeBag)
+      .disposed(by: self.disposeBag)
+  }
+  
+  private func updateConstraints() {
+    let isPortrait = UIDevice.current.orientation.isPortrait
+    let verticalInset = isPortrait
+    ? Metric.collectionViewVerticalInset
+    : Metric.collectionViewHorizontalInset
+    
+    self.sliderCollectionView.snp.updateConstraints {
+      $0.height.equalToSuperview().inset(verticalInset)
+    }
   }
 }
 
 extension DetailViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
     let widthPadding = Metric.collectionViewSpacing
-    let width = sliderCollectionView.bounds.size.width - widthPadding
-    let height = sliderCollectionView.bounds.size.height
+    let width = collectionView.bounds.size.width - widthPadding
+    let height = collectionView.bounds.size.height
     return CGSize(width: width, height: height)
   }
 }
