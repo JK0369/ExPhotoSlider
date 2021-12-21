@@ -17,7 +17,7 @@ class DetailViewController: UIViewController {
   // MARK: Constant
   private enum Metric {
     static let collectionViewSpacing = 8.0
-    static let collectionViewVerticalInset = (UIScreen.main.bounds.height / 3)
+    static let collectionViewVerticalInset = (UIScreen.main.bounds.height / 5)
     static let collectionViewHorizontalInset = 8.0
     static let collectionViewContentInset = UIEdgeInsets(
       top: 0.0,
