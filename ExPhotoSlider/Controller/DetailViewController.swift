@@ -107,9 +107,8 @@ class DetailViewController: UIViewController {
     
     self.sliderCollectionView.snp.makeConstraints {
       $0.centerX.centerY.equalToSuperview()
-      $0.height.equalToSuperview().inset(Metric.collectionViewVerticalInset)
-      $0.left.equalTo(view.safeAreaLayoutGuide).offset(Metric.collectionViewHorizontalInset)
-      $0.right.equalTo(view.safeAreaLayoutGuide).offset(-Metric.collectionViewHorizontalInset)
+      $0.height.equalTo(view.safeAreaLayoutGuide).inset(Metric.collectionViewVerticalInset)
+      $0.left.right.equalTo(view.safeAreaLayoutGuide).inset(Metric.collectionViewHorizontalInset)
     }
   }
   
@@ -159,7 +158,7 @@ class DetailViewController: UIViewController {
     : Metric.collectionViewHorizontalInset
     
     self.sliderCollectionView.snp.updateConstraints {
-      $0.height.equalToSuperview().inset(verticalInset)
+      $0.height.equalTo(view.safeAreaLayoutGuide).inset(verticalInset)
     }
   }
 }
